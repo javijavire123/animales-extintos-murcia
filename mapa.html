@@ -3,34 +3,78 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Mapa de fósiles</title>
+<title>Mapa de yacimientos</title>
 
 <link rel="stylesheet" href="estilos.css">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<!-- Leaflet (mapa) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<style>
+#map {
+height: 500px;
+width: 90%;
+margin: 30px auto;
+border-radius: 12px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+</style>
 
 </head>
 
 <body>
 
 <header>
-
-<h1>Mapa de yacimientos fósiles</h1>
+<h1>Mapa de yacimientos en Murcia</h1>
 
 <nav>
 <a href="index.html">Inicio</a>
+<a href="mapa.html">Mapa</a>
 </nav>
-
 </header>
 
 <main>
+
+<h2 style="text-align:center;">Localización de animales extintos</h2>
 
 <div id="map"></div>
 
 </main>
 
+<!-- Script Leaflet -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="script.js"></script>
+
+<script>
+
+// Crear mapa centrado en Murcia
+var map = L.map('map').setView([37.9922, -1.1307], 9);
+
+// Cargar mapa base
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '© OpenStreetMap'
+}).addTo(map);
+
+
+// 📍 YECLA → Braquiosaurus
+L.marker([38.61, -1.11]).addTo(map)
+.bindPopup('<a href="braquiosaurus.html"><b>Yecla</b><br>Braquiosaurus</a>');
+
+
+// 📍 PUERTO DE LA CADENA → Anancus
+L.marker([37.90798, -1.12687]).addTo(map)
+.bindPopup('<a href="Anancus.html"><b>Puerto de la Cadena</b><br>Anancus</a>');
+
+
+// 📍 CEHEGÍN → Notosaurio
+L.marker([38.0925, -1.7987]).addTo(map)
+.bindPopup('<a href="notosaurio.html"><b>Cehegín</b><br>Notosaurio</a>');
+
+
+// 📍 SIMA DE LAS PALOMAS → Hiena de las cavernas
+L.marker([37.7995, -0.9014]).addTo(map)
+.bindPopup('<a href="hienacuevas.html"><b>Sima de las Palomas</b><br>Hiena de las cavernas</a>');
+
+</script>
 
 </body>
 </html>
